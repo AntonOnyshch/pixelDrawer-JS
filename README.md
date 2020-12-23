@@ -1,7 +1,7 @@
 # pixelDrawer-JS
 This is a simple pixel drawer. You can draw lines, circles using JS.
 
-![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/tree/main/readme-Resources/example.gif)
+![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/example.gif)
 
 
 # How to reproduce?
