@@ -1,25 +1,26 @@
 export class PixelDrawer {
-    constructor() {
+    constructor(width, height, alpha = true, bitPerPixel = 4) {
         this.data = undefined;
-        this.width = 0;
-        this.height = 0;
-        this.canvasWidthFactor = 0;
-        //this.init(width, height);
-    }
-    init(width, height) {
+        this.alpha = alpha;
         this.width = width;
         this.height = height;
-        this.canvasWidthFactor = this.width * 4;
+        this.stride = this.width * bitPerPixel;
     }
-    clearData(opacity = 0) {
+
+    clearData() {
+        const alpha = this.alpha ? 0 : 255;
+        const width = this.width;
+        const stride = this.stride;
+
         let pixel = 0;
+        
         for (let i = 0; i < this.height; i++) {
-            for (let j = 0; j < this.width; j++) {
-                pixel = i * this.canvasWidthFactor + j * 4;
+            for (let j = 0; j < width; j++) {
+                pixel = i * stride + j * 4;
                 this.data[pixel] = 0;
                 this.data[pixel + 1] = 0;
                 this.data[pixel + 2] = 0;
-                this.data[pixel + 3] = opacity;
+                this.data[pixel + 3] = alpha;
             }
         }
     }
