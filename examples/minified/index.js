@@ -1,4 +1,4 @@
-import '../dist/pixelDrawer.min.js';
+import '../../dist/pixelDrawer.min.js';
 
 window.init = function(canvasId) {
       const cvsRef = document.getElementById(canvasId);

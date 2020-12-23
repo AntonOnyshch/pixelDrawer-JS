@@ -1,4 +1,4 @@
-import LineDrawer from '../../src/lineDrawer.js';
+import {LineDrawer} from '../../src/lineDrawer.js';
 
 window.init = function(canvasId) {
       const cvsRef = document.getElementById(canvasId);
