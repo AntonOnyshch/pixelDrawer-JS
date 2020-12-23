@@ -8,3 +8,10 @@ This is a simple pixel drawer. You can draw lines, circles using JS.
 1. Clone or download repo
 2. Execute this line in terminal: **node ./startNode.js** to start Node server
 3. Put it in the browser line: **http://localhost:3000/examples/lineDrawer/index.html**
+
+# How it works?
+**Line Drawer**
+
+Let's assume that we have x0,y0,x1 and y1 coordinates.
+Consider the next image
+![How line drawer works-1](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/how-linedrawer-works-1.png)
