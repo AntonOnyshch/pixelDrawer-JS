@@ -1,6 +1,6 @@
-import {PixelDrawer} from "./pixelDrawer.js";
+import PixelDrawer from "./pixelDrawer.js";
 
-export class CircleDrawer extends PixelDrawer {
+export default class CircleDrawer extends PixelDrawer {
     constructor(width, height) {
         super(width, height);
     }

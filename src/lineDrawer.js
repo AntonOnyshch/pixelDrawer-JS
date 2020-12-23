@@ -1,6 +1,6 @@
 import {PixelDrawer} from "./pixelDrawer.js";
 
-export default class LineDrawer extends PixelDrawer {
+export class LineDrawer extends PixelDrawer {
     constructor(width, height,  alpha = true, bitPerPixel = 4) {
         super(width, height, alpha, bitPerPixel);
 
@@ -63,26 +63,29 @@ export default class LineDrawer extends PixelDrawer {
         const yadd = y1 > y0 ? 1 : -1;
         const dx2 = dx * 2;
         let pixel = 0;
+
+        //Calculate error
+        const _setError = () => {
+            error += derror;
+            if (error > dx) {
+                y += yadd;
+                error -= dx2;
+            }
+        }
+
+        //If line is steep we treat it like from up to down(or down to up)
         if(steep) {
             for (; x < x1; x++) {
                 pixel = x * this.stride + y * 4;
                 pixelReady(x, y, pixel);
-                error += derror;
-                if (error > dx) {
-                    y += yadd;
-                    error -= dx2;
-                }
+                _setError();
             }
         }
-        else {
+        else {//from left to right(or right to left)
             for (; x < x1; x++) {
                 pixel = y * this.stride + x * 4;
                 pixelReady(x, y, pixel);
-                error += derror;
-                if (error > dx) {
-                    y += yadd;
-                    error -= dx2;
-                }
+                _setError();
             }
         }
 
