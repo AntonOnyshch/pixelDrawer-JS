@@ -1,28 +1,28 @@
 # pixelDrawer-JS
-This is a simple pixel drawer. You can draw lines, circles using JS.
 
 ![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/example.gif)
 
 
-# How to reproduce?
-1. Clone or download repo
-2. Execute this line in terminal: **node ./startNode.js** to start Node server
-3. Put it in the browser line: **http://localhost:3000/examples/lineDrawer/index.html**
+# Как запустить?
+1. Скачайте или склонируйте репозиторий. 
+2. Выполните в терминале: **node ./startNode.js** для запуска Node сервера.
+3. Перейдите по адресу: **http://localhost:3000/examples/lineDrawer/index.html**
+После */examples/* идет имя папки. В данном случае это **lineDrawer**.
 
-# How it works?
-**Line Drawer**
+# Как это работает?
+**Линии**
 
-Let's assume that we have *x0,y0,x1 and y1* coordinates.
-Consider the next image:
+Давайте предположим что у нас есть следующие координаты *x0,y0,x1 and y1*.
+Посмотрите на изображение:
 ![How line drawer works-1](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/how-linedrawer-works-1.png)
 
-Let's walk down to our method and analyze it.
+Теперь пройдемся по каждой строчке метода который рисует линию и разберем её.
 
     if (Math.abs(x0 - x1) < Math.abs(y0 - y1)) {
       [x0, y0] = [y0, x0];
       [x1, y1] = [y1, x1];
       steep = true;
     }
-The first thing we need to understand whether our line is steep or not. Steep means that (x1 - x0) < (y1 - y0).
-Our coordinates will not be steep, because (80 - 20) > (80 - 40);
-Whe should **always** draw our line from *left to right*. 
+Первое что нам нужно сделать это понять крутая ли наша линия. То, что она крутая нам даст вот это равенство: (x1 - x0) < (y1 - y0).
+Наша линия не будет крутой потому-что (80 - 20) > (80 - 40);
+Мы **всегда** должны рисовать линию слева на право!
