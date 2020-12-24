@@ -44,4 +44,21 @@ These lines of code will make or coordinates from left to right.
         
 > **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
 
-To understand the rest of the code we should grasp the conception of line drawing by pixels
+Imagine we want to draw this line:
+
+![How line drawer works-4](readme-Resources/linedrawer-1.png)
+
+Now consider this code:
+
+        const dx = x1 - x0;
+        const dy = y1 - y0;
+        const derror = Math.abs(dy) * 2;
+        const yadd = y1 > y0 ? 1 : -1;
+        const dx2 = dx * 2;
+        let error = 0;
+        
+![How line drawer works-4](readme-Resources/linedrawer-2.png)
+
+If **error > dx** than we increment our Y by 1;
+
+![How line drawer works-4](readme-Resources/linedrawer-3.png)
