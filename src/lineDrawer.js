@@ -43,7 +43,7 @@ export class LineDrawer extends PixelDrawer {
         //Steep is true if the width of line is less than height
         let steep = false;
 
-        // if the line is steep, we transpose the image
+        // if the line is steep, we transpose the coordinates
         if (Math.abs(x0 - x1) < Math.abs(y0 - y1)) {
             [x0, y0] = [y0, x0];
             [x1, y1] = [y1, x1];
