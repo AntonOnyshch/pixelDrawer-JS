@@ -15,7 +15,7 @@ This is a simple pixel drawer. You can draw lines, circles using JS.
 
 Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordinates.
 Consider the next image:
-![How line drawer works-1](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/how-linedrawer-works-1.png)
+![How line drawer works-1](readme-Resources/how-linedrawer-works-1.png)
 
 Let's walk down to our method and analyze every line of it.
 
@@ -28,3 +28,4 @@ The first thing we need to understand whether our line is steep or not. Steep me
 Our coordinates will not be steep, because (80 - 20) > (80 - 40);
 If the line is steep we transpose our coordinates to make it NOT steep, so we can draw it horizontally(from left to right) again.
 **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
+![How line drawer works-1](readme-Resources/how-linedrawer-works-2.png)
