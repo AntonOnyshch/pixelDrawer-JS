@@ -57,11 +57,12 @@ export class LineDrawer extends PixelDrawer {
         const dx = x1 - x0;
         const dy = y1 - y0;
         const derror = Math.abs(dy) * 2;
+        const yadd = y1 > y0 ? 1 : -1;
+        const dx2 = dx * 2;
+        
         let error = 0;
         let y = y0;
         let x = x0;
-        const yadd = y1 > y0 ? 1 : -1;
-        const dx2 = dx * 2;
         let pixel = 0;
 
         //Calculate error

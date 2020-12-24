@@ -12,6 +12,8 @@ window.init = function(canvasId) {
       const centerX = Math.round(cvsImageData.width * 0.5);
       const centerY = Math.round(cvsImageData.height * 0.5);
 
+      lineDrawer.draw(0, 0, 8, 7, color);
+
       cvsRef.onmousemove = (e) => {
         lineDrawer.draw(centerX, centerY, e.offsetX, e.offsetY, color);
         cvsContext.putImageData(cvsImageData, 0, 0);
