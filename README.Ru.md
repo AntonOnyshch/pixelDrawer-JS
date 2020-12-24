@@ -12,7 +12,7 @@
 # Как это работает?
 **Линии**
 
-Давайте предположим что у нас есть следующие координаты *x0,y0,x1 and y1*.
+Давайте предположим что у нас есть следующие координаты *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px*.
 Посмотрите на изображение:
 ![How line drawer works-1](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/how-linedrawer-works-1.png)
 
