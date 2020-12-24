@@ -25,7 +25,6 @@ Our coordinates will not be steep, because (80 - 20) > (80 - 40);
 ![How line drawer works-2](readme-Resources/how-linedrawer-works-2.png)
 
 If the line is steep we transpose our coordinates to make it NOT steep, so we can draw it horizontally(from left to right) again.
-> **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
 
 
     if (Math.abs(x0 - x1) < Math.abs(y0 - y1)) {
@@ -36,3 +35,13 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 ![How line drawer works-3](readme-Resources/how-linedrawer-works-3.png)
 
+These lines of code will make or coordinates from left to right.
+
+        if (x0 > x1) {
+            [x0, x1] = [x1, x0];
+            [y0, y1] = [y1, y0];
+        }
+        
+> **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
+
+To understand the rest of the code we should grasp the conception of line drawing by pixels
