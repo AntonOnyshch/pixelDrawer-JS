@@ -62,3 +62,5 @@ Now consider this code:
 If **error > dx** than we increment our Y by 1;
 
 ![How line drawer works-4](readme-Resources/linedrawer-3.png)
+
+![How line drawer works-5](readme-Resources/linedrawer-4.png)
