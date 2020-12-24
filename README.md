@@ -28,4 +28,5 @@ The first thing we need to understand whether our line is steep or not. Steep me
 Our coordinates will not be steep, because (80 - 20) > (80 - 40);
 If the line is steep we transpose our coordinates to make it NOT steep, so we can draw it horizontally(from left to right) again.
 > **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
+
 ![How line drawer works-1](readme-Resources/how-linedrawer-works-2.png)
