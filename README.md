@@ -17,7 +17,7 @@ Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordi
 Consider the next image:
 ![How line drawer works-1](readme-Resources/how-linedrawer-works-1.png)
 
-Let's walk down to our method and analyze every line of it.
+Let's walk down to our method and analyze some lines of it.
 
 The first thing we need to understand whether our line is steep or not. Steep means that (x1 - x0) < (y1 - y0). In other words: width of line is less than height.
 Our coordinates will not be steep, because (80 - 20) > (80 - 40);
@@ -63,4 +63,5 @@ If **error > dx** than we increment our Y by 1;
 
 ![How line drawer works-4](readme-Resources/linedrawer-3.png)
 
+Different example:
 ![How line drawer works-5](readme-Resources/linedrawer-4.png)
