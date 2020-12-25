@@ -15,7 +15,7 @@ export class LineDrawer extends PixelDrawer {
     }
 
     //Clear only pixels where our line was drawn
-    clearLine() {
+    clearInternalBuffer() {
         const alpha = this.alpha ? 0 : 255;
         const buff = this.internalBuffer;
         for (let i = 0; i < buff.length; i++) {
@@ -27,8 +27,8 @@ export class LineDrawer extends PixelDrawer {
     }
 
     draw(x0, y0, x1, y1, color) {
-        this.clearLine();
-        this.rawDraw(x0, y0, x1, y1, (x, y, p) => {
+        this.clearInternalBuffer();
+        this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
             this.internalBuffer[x] = p;
 
             this.data[p] = color[0];
@@ -39,7 +39,7 @@ export class LineDrawer extends PixelDrawer {
     }
 
     //Draw line
-    rawDraw(x0, y0, x1, y1, pixelReady = (x, y, pixel) => { }) {
+    internalDraw(x0, y0, x1, y1, pixelReady = (x, y, pixel) => { }) {
         //Steep is true if the width of line is less than height
         let steep = false;
 

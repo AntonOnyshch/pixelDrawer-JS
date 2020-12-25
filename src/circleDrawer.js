@@ -38,7 +38,7 @@ export class CircleDrawer extends PixelDrawer {
        this.clearInternalBuffer();
        this.internalBuffer.length = 0;
        const data = this.data;
-       this.internalDraw(x1, y1, r, color, (p1, p2, p3, p4) => {
+       this.internalDraw(x1, y1, r, (p1, p2, p3, p4) => {
 
         this.internalBuffer.push(new Int32Array([p1, p2, p3, p4]));
 
@@ -64,7 +64,7 @@ export class CircleDrawer extends PixelDrawer {
        });
     }
 
-    internalDraw(x1, y1, r, color, pixelReady = (p1, p2, p3, p4) => { }) {
+    internalDraw(x1, y1, r, pixelReady = (p1, p2, p3, p4) => { }) {
 
         let pixel1, pixel2, pixel3, pixel4;
         let x = 0;
