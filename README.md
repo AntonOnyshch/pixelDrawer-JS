@@ -48,7 +48,7 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 ![How line drawer works-3](readme-Resources/how-linedrawer-works-3.png)
 
-These lines of code will make or coordinates from left to right.
+These lines of code will make our coordinates from left to right.
 
         if (x0 > x1) {
             [x0, x1] = [x1, x0];
