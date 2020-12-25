@@ -1,25 +1,30 @@
 [Русский вариант](README.Ru.md)
-# pixelDrawer-JS
-This is a simple pixel drawer. You can draw lines, circles using JS.
-
-![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/example.gif)
-
 
 # Table of Contents
+- [How-to-reproduce](#how-to-reproduce)
 - [How it works](#how-it-works)
   - [Line Drawer](#linedrawer)
+  - [Circle Drawer](#circledrawer)
+  
+ 
+# Pixel Drawer
+This is a simple pixel drawer. You can draw lines, circles using JS.
 
-
+<a name="how-to-reproduce"></a>
 # How to reproduce?
 1. Clone or download repo
 2. Execute this line in terminal: **node ./startNode.js** to start Node server
 3. Put it in the browser line: **http://localhost:3000/examples/lineDrawer/index.html**
 
+**NB!** after /examples/  you can write *lineDrawer* or *circleDrawer*. All examples are placed in [examples](examples/) folder.
+
 <a name="how-it-works"></a>
 # How it works?
 
 <a name="linedrawer"></a>
-**Line Drawer**
+# Line Drawer
+
+![Example of drawn line](readme-Resources/example.gif)
 
 Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordinates.
 Consider the next image:
@@ -43,7 +48,7 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 ![How line drawer works-3](readme-Resources/how-linedrawer-works-3.png)
 
-These lines of code will make or coordinates from left to right.
+These lines of code will make our coordinates from left to right.
 
         if (x0 > x1) {
             [x0, x1] = [x1, x0];
@@ -73,3 +78,9 @@ If **error > dx** than we increment our Y by 1;
 
 Different example:
 ![How line drawer works-5](readme-Resources/linedrawer-4.png)
+
+
+<a name="circledrawer"></a>
+# Circle Drawer
+
+![Example of drawn circle](readme-Resources/circleExample.gif)
