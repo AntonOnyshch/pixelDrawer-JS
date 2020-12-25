@@ -1,6 +1,7 @@
 [Русский вариант](README.Ru.md)
 
 # Table of Contents
+- [How-to-reproduce](#how-to-reproduce)
 - [How it works](#how-it-works)
   - [Line Drawer](#linedrawer)
   - [Circle Drawer](#circledrawer)
@@ -9,6 +10,7 @@
 # Pixel Drawer
 This is a simple pixel drawer. You can draw lines, circles using JS.
 
+<a name="how-to-reproduce"></a>
 # How to reproduce?
 1. Clone or download repo
 2. Execute this line in terminal: **node ./startNode.js** to start Node server
