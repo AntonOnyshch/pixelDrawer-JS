@@ -19,7 +19,7 @@ This is a simple pixel drawer. You can draw lines, circles using JS.
 # How it works?
 
 <a name="linedrawer"></a>
-**Line Drawer**
+# Line Drawer
 
 Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordinates.
 Consider the next image:
@@ -76,4 +76,6 @@ Different example:
 
 
 <a name="circledrawer"></a>
-![Example of drawn line](readme-Resources/circleExample.gif)
+# Circle Drawer
+
+![Example of drawn circle](readme-Resources/circleExample.gif)
