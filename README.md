@@ -14,6 +14,8 @@ This is a simple pixel drawer. You can draw lines, circles using JS.
 2. Execute this line in terminal: **node ./startNode.js** to start Node server
 3. Put it in the browser line: **http://localhost:3000/examples/lineDrawer/index.html**
 
+**NB!** after /examples/  you can write *lineDrawer* or *circleDrawer*. All examples are placed in [examples](examples/) folder.
+
 <a name="how-it-works"></a>
 # How it works?
 
