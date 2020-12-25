@@ -1,14 +1,14 @@
 [Русский вариант](README.Ru.md)
-# pixelDrawer-JS
+# Pixel Drawer
 This is a simple pixel drawer. You can draw lines, circles using JS.
 
-![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/example.gif)
+![Example of drawn line](readme-Resources/example.gif)
 
 
 # Table of Contents
 - [How it works](#how-it-works)
   - [Line Drawer](#linedrawer)
-
+  - [Circle Drawer](#circledrawer)
 
 # How to reproduce?
 1. Clone or download repo
@@ -73,3 +73,7 @@ If **error > dx** than we increment our Y by 1;
 
 Different example:
 ![How line drawer works-5](readme-Resources/linedrawer-4.png)
+
+
+<a name="circledrawer"></a>
+![Example of drawn line](readme-Resources/circleExample.gif)
