@@ -54,6 +54,7 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 <a name="left-to-right"></a>
 **From left to right**
+
 These lines of code will make our coordinates from left to right.
 
         if (x0 > x1) {
