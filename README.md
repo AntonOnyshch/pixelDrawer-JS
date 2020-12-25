@@ -13,6 +13,8 @@
 # Pixel Drawer
 This is a simple pixel drawer. You can draw lines, circles using JS.
 
+![Js](readme-Resources/js.jpg)
+
 <a name="how-to-reproduce"></a>
 # How to reproduce?
 1. Clone or download repo
