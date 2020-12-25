@@ -4,7 +4,9 @@
 - [How-to-reproduce](#how-to-reproduce)
 - [How it works](#how-it-works)
   - [Line Drawer](#linedrawer)
-    - [What is steep](#whatissteep)
+    - [What is steep?](#what-is-steep)
+    - [From left to right](#left-to-right)
+    - [Making an error](#making-an-error)
   - [Circle Drawer](#circledrawer)
   
  
@@ -31,8 +33,9 @@ Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordi
 Consider the next image:
 ![How line drawer works-1](readme-Resources/how-linedrawer-works-1.png)
 
-<a name="whatissteep"></a>
+<a name="what-is-steep"></a>
 **Steep**
+
 The first thing we need to understand whether our line is steep or not. Steep means that (x1 - x0) < (y1 - y0). In other words: width of line is less than height.
 Our coordinates will not be steep, because (80 - 20) > (80 - 40);
 
@@ -49,6 +52,8 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 ![How line drawer works-3](readme-Resources/how-linedrawer-works-3.png)
 
+<a name="left-to-right"></a>
+**From left to right**
 These lines of code will make our coordinates from left to right.
 
         if (x0 > x1) {
@@ -58,7 +63,8 @@ These lines of code will make our coordinates from left to right.
         
 > **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
 
-Imagine we want to draw this line:
+<a name="making-an-error"></a>
+**Making an error**
 
 ![How line drawer works-4](readme-Resources/linedrawer-1.png)
 
