@@ -33,6 +33,7 @@ Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordi
 Consider the next image:
 ![How line drawer works-1](readme-Resources/how-linedrawer-works-1.png)
 
+---
 <a name="what-is-steep"></a>
 **Steep**
 
@@ -52,6 +53,7 @@ If the line is steep we transpose our coordinates to make it NOT steep, so we ca
 
 ![How line drawer works-3](readme-Resources/how-linedrawer-works-3.png)
 
+---
 <a name="left-to-right"></a>
 **From left to right**
 
@@ -64,6 +66,7 @@ These lines of code will make our coordinates from left to right.
         
 > **NB!** Whe should **always** draw our line from *left to right* and width should always be bigger than height.
 
+---
 <a name="making-an-error"></a>
 **Making an error**
 
