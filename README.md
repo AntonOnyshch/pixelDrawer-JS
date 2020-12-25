@@ -5,12 +5,20 @@ This is a simple pixel drawer. You can draw lines, circles using JS.
 ![Example of drawn line](https://github.com/AntonOnyshch/pixelDrawer-JS/raw/main/readme-Resources/example.gif)
 
 
+# Table of Contents
+- [How it works](#how-it-works)
+  - [Line Drawer](#linedrawer)
+
+
 # How to reproduce?
 1. Clone or download repo
 2. Execute this line in terminal: **node ./startNode.js** to start Node server
 3. Put it in the browser line: **http://localhost:3000/examples/lineDrawer/index.html**
 
+<a name="how-it-works"></a>
 # How it works?
+
+<a name="linedrawer"></a>
 **Line Drawer**
 
 Let's assume that we have *x0 = 20px, y0 = 80px, x1 = 80px and y1 = 40px* coordinates.
