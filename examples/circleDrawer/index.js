@@ -8,12 +8,10 @@ window.init = function(canvasId) {
       const drawer = new CircleDrawer(cvsImageData.width, cvsImageData.height, false);
 
       drawer.data = cvsImageData.data;
-      const color = new Uint8Array([50, 0, 255, 255]);
-      const centerX = Math.round(cvsImageData.width * 0.5);
-      const centerY = Math.round(cvsImageData.height * 0.5);
+      const color = new Uint8Array([0, 0, 255, 255]);
 
       cvsRef.onmousemove = (e) => {
-        drawer.draw(e.offsetX, e.offsetY, 30, color);
-        cvsContext.putImageData(cvsImageData, 0, 0);
+          drawer.draw(e.offsetX, e.offsetY, 30, color, 3);
+          cvsContext.putImageData(cvsImageData, 0, 0);
       }
 }

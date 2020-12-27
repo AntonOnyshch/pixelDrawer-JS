@@ -1,13 +1,22 @@
 import {PixelDrawer} from "./pixelDrawer.js";
 
 export class CircleDrawer extends PixelDrawer {
+    /**
+    * @constructor
+    * @param {Number} width - Width of canvas
+    * @param {Number} height - Height of canvas
+    * @param {Boolean} [alpha = true] - Indicates whether or not your canvas use alpha chanel. By default is true.
+    * @param {Number} [bitPerPixel = 4] - The number of bit per pixel. For example: 4 bit per pixel means rgba channel.
+    */
     constructor(width, height, alpha = true, bitPerPixel = 4) {
         super(width, height, alpha, bitPerPixel);
 
         this.internalBuffer = new Array();
     }
 
-    //Clear only pixels where our circle was drawn
+    /** 
+    * Clear the only pixels where our circle has drawn
+    */
     clearInternalBuffer() {
         const alpha = this.alpha ? 0 : 255;
         const buff = this.internalBuffer;
@@ -34,36 +43,54 @@ export class CircleDrawer extends PixelDrawer {
         }
     }
 
-    draw(x1, y1, r, color) {
+    /**
+     * Draw a circle on data buffer
+     * @param {Number} centerX - X coordinate that represents center of the circle
+     * @param {Number} centerY - Y coordinate that represents center of the circle
+     * @param {Number} radius - Radius of the circle
+     * @param {(Uint8Array | Uint8ClampedArray)} color - Color of the circle
+     * @param {Number} [strokeThickness = 1] - Thickness of stroke
+    */
+    draw(centerX, centerY, radius, color, strokeThickness = 1) {
        this.clearInternalBuffer();
        this.internalBuffer.length = 0;
        const data = this.data;
-       this.internalDraw(x1, y1, r, (p1, p2, p3, p4) => {
+       for (let i = 0; i < strokeThickness; i++) {
+        this.internalDraw(centerX, centerY, radius + i, (p1, p2, p3, p4) => {
 
-        this.internalBuffer.push(new Int32Array([p1, p2, p3, p4]));
-
-        data[p1] = color[0];
-        data[p1 + 1] = color[1];
-        data[p1 + 2] = color[2];
-        data[p1 + 3] = color[3];
-
-        data[p2] = color[0];
-        data[p2 + 1] = color[1];
-        data[p2 + 2] = color[2];
-        data[p2 + 3] = color[3];
-
-        data[p3] = color[0];
-        data[p3 + 1] = color[1];
-        data[p3 + 2] = color[2];
-        data[p3 + 3] = color[3];
-
-        data[p4] = color[0];
-        data[p4 + 1] = color[1];
-        data[p4 + 2] = color[2];
-        data[p4 + 3] = color[3];
-       });
+            this.internalBuffer.push(new Int32Array([p1, p2, p3, p4]));
+    
+            data[p1] = color[0];
+            data[p1 + 1] = color[1];
+            data[p1 + 2] = color[2];
+            data[p1 + 3] = color[3];
+    
+            data[p2] = color[0];
+            data[p2 + 1] = color[1];
+            data[p2 + 2] = color[2];
+            data[p2 + 3] = color[3];
+    
+            data[p3] = color[0];
+            data[p3 + 1] = color[1];
+            data[p3 + 2] = color[2];
+            data[p3 + 3] = color[3];
+    
+            data[p4] = color[0];
+            data[p4 + 1] = color[1];
+            data[p4 + 2] = color[2];
+            data[p4 + 3] = color[3];
+           });
+       }
     }
 
+    /**
+     * Internal method for drawing a circle on data buffer
+     * @param {Number} x1 - X coordinate that represents center of the circle
+     * @param {Number} x1 - Y coordinate that represents center of the circle
+     * @param {Number} r - Radius of the circle
+     * @callback pixelReadyCallback
+     * @param {pixelReadyCallback} pixelReady - The callback that will be fired when all 4 pixels will be calculated.
+    */
     internalDraw(x1, y1, r, pixelReady = (p1, p2, p3, p4) => { }) {
 
         let pixel1, pixel2, pixel3, pixel4;
