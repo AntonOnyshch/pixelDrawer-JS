@@ -1,20 +1,34 @@
 import {PixelDrawer} from "./pixelDrawer.js";
 
+/** Allows you to draw lines directly on data buffer 
+* @extends PixelDrawer
+*/
 export class LineDrawer extends PixelDrawer {
+    
+    /**
+    * @param {Number} width - Width of canvas
+    * @param {Number} height - Height of canvas
+    * @param {Boolean} [alpha = true] - Indicates whether or not your canvas use alpha channel. By default is true.
+    * @param {Number} [bitPerPixel = 4] - The number of bits per pixel. For example: 4 bits per pixel means rgba channel.
+    */
     constructor(width, height,  alpha = true, bitPerPixel = 4) {
         super(width, height, alpha, bitPerPixel);
 
-        //Init empty functions so we won't check for undefined every time 
+        /** @private */
         this.onVerticalDraw = (x, y, a) => { };
+        /** @private */
         this.onHorizontalDraw = (x, y, a) => { };
 
         //Calculate length for internal buffer. 
         //We will put pixels in this buffer and then use it for clearing our drawn line
         const length = this.width > this.height ? this.width : this.height;
+        /** @private */
         this.internalBuffer = new Array(length);
     }
 
-    //Clear only pixels where our line was drawn
+    /** 
+    * Clear the only pixels where our line has drawn
+    */
     clearInternalBuffer() {
         const alpha = this.alpha ? 0 : 255;
         const buff = this.internalBuffer;
@@ -26,6 +40,14 @@ export class LineDrawer extends PixelDrawer {
         }
     }
 
+    /**
+     * Draw a line on data buffer
+     * @param {Number} x0 - x coordinate that represents start of the line
+     * @param {Number} y0 - y coordinate that represents start of the line
+     * @param {Number} x1 - x coordinate that represents end of the line
+     * @param {Number} y1 - y coordinate that represents end of the line
+     * @param {(Uint8Array | Uint8ClampedArray)} color - Color of the line
+    */
     draw(x0, y0, x1, y1, color) {
         this.clearInternalBuffer();
         this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
@@ -38,7 +60,15 @@ export class LineDrawer extends PixelDrawer {
         });
     }
 
-    //Draw line
+    /**
+     * Internal method for drawing a line on data buffer
+     * @param {Number} x0 - x coordinate that represents start of the line
+     * @param {Number} y0 - y coordinate that represents start of the line
+     * @param {Number} x1 - x coordinate that represents end of the line
+     * @param {Number} y1 - y coordinate that represents end of the line
+     * @callback pixelReadyCallback
+     * @param {pixelReadyCallback} pixelReady - The callback that will be fired when pixel will be calculated.
+    */
     internalDraw(x0, y0, x1, y1, pixelReady = (x, y, pixel) => { }) {
         //Steep is true if the width of line is less than height
         let steep = false;

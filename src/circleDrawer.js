@@ -1,8 +1,10 @@
 import {PixelDrawer} from "./pixelDrawer.js";
 
+/** Allows you to draw circles directly on data buffer 
+ * @extends PixelDrawer
+*/
 export class CircleDrawer extends PixelDrawer {
     /**
-    * @constructor
     * @param {Number} width - Width of canvas
     * @param {Number} height - Height of canvas
     * @param {Boolean} [alpha = true] - Indicates whether or not your canvas use alpha chanel. By default is true.
@@ -11,6 +13,7 @@ export class CircleDrawer extends PixelDrawer {
     constructor(width, height, alpha = true, bitPerPixel = 4) {
         super(width, height, alpha, bitPerPixel);
 
+        /** @private */
         this.internalBuffer = new Array();
     }
 
