@@ -3,14 +3,17 @@
 */
 export class PixelDrawer {
 
-    /**
+    constructor() {
+        this.data = undefined;
+    }
+
+    /**Set initial values
     * @param {Number} width - Width of canvas
     * @param {Number} height - Height of canvas
     * @param {Boolean} [alpha = true] - Indicates whether or not your canvas use alpha channel. By default is true.
     * @param {Number} [bitPerPixel = 4] - The number of bits per pixel. For example: 4 bits per pixel means rgba channel.
-    */
-    constructor(width, height, alpha = true, bitPerPixel = 4) {
-        this.data = undefined;
+     */
+    init(width, height, alpha = true, bitPerPixel = 4) {
         this.alpha = alpha;
         this.width = width;
         this.height = height;

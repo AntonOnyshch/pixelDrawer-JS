@@ -10,11 +10,15 @@ export class CircleDrawer extends PixelDrawer {
     * @param {Boolean} [alpha = true] - Indicates whether or not your canvas use alpha chanel. By default is true.
     * @param {Number} [bitPerPixel = 4] - The number of bit per pixel. For example: 4 bit per pixel means rgba channel.
     */
-    constructor(width, height, alpha = true, bitPerPixel = 4) {
-        super(width, height, alpha, bitPerPixel);
+    constructor() {
+        super();
 
         /** @private */
         this.internalBuffer = new Array();
+    }
+
+    init(width, height, alpha = true, bitPerPixel = 4) {
+        super.init(width, height, alpha, bitPerPixel);
     }
 
     /** 

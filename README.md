@@ -9,7 +9,7 @@
     - [Making an error](#making-an-error)
   - [Circle Drawer](#circledrawer)
   
- 
+
 # Pixel Drawer
 This is a simple pixel drawer. You can draw lines, circles using JS.
 
