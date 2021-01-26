@@ -40,4 +40,22 @@ export class PixelDrawer {
             }
         }
     }
+
+    /** 
+    * Set one pixel to data buffer
+    * @param {Number} pixel - pixel value according to bitPerPixel parameter
+    * @param {Array} color - array of RGBA
+    */
+    setPixel(pixel, color) {
+        // if(pixel === undefined || pixel < 0) {
+        //     throw new Error("pixel value must be a positive number");
+        // }
+        // else if(color === undefined || (color instanceof Array && color.length < 3)) {
+        //     throw new Error("color value must be an array and has length bigger than 2");
+        // }
+        this.data[pixel] = color[0];
+        this.data[pixel + 1] = color[1];
+        this.data[pixel + 2] = color[2];
+        this.data[pixel + 3] =  this.alpha ? color[3] : 255;
+    }
 }
