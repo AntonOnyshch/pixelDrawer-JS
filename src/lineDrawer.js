@@ -76,7 +76,7 @@ export class LineDrawer extends PixelDrawer {
      * @param {(Uint8Array | Uint8ClampedArray)} color - Color of the line
     */
     draw(x0, y0, x1, y1, color) {
-        this.clearDataBuffer(this.linesBuffers.length - 1);
+        this.clearData(this.linesBuffers.length - 1);
         if(this.linesBuffers.length === 0) {
             this.linesBuffers.push([new Array(this.bufferLength), new Array(this.bufferLength)]);
         }

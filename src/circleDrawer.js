@@ -24,7 +24,7 @@ export class CircleDrawer extends PixelDrawer {
     /** 
     * Clear the only pixels where our circle has drawn
     */
-    clearInternalBuffer() {
+   clearData() {
         const alpha = this.alpha ? 0 : 255;
         const buff = this.internalBuffer;
         for (let i = 0; i < buff.length; i++) {
@@ -59,7 +59,7 @@ export class CircleDrawer extends PixelDrawer {
      * @param {Number} [strokeThickness = 1] - Thickness of stroke
     */
     draw(centerX, centerY, radius, color, strokeThickness = 1) {
-       this.clearInternalBuffer();
+       this.clearData();
        this.internalBuffer.length = 0;
        const data = this.data;
        for (let i = 0; i < strokeThickness; i++) {
