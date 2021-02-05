@@ -30,7 +30,7 @@ export class LineDrawer extends PixelDrawer {
     * Clear the only pixels where our line has drawn
     * @param {Number} index - index that indicates drawn line
     */
-   clearData(index = -1) {
+    clearData(index = -1) {
         if(this.linesBuffers.length === 0) {
             return;
         }
@@ -75,22 +75,40 @@ export class LineDrawer extends PixelDrawer {
      * @param {Number} y1 - y coordinate that represents end of the line
      * @param {(Uint8Array | Uint8ClampedArray)} color - Color of the line
     */
-    draw(x0, y0, x1, y1, color) {
-        this.clearData(this.linesBuffers.length - 1);
+    draw(x0, y0, x1, y1, color, options = {}) {
         if(this.linesBuffers.length === 0) {
             this.linesBuffers.push([new Array(this.bufferLength), new Array(this.bufferLength)]);
         }
         const pixelBuffer = this.linesBuffers[this.linesBuffers.length - 1][0];
         const yBuffer = this.linesBuffers[this.linesBuffers.length - 1][1];
-        this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
-            pixelBuffer[x] = p;
-            yBuffer[x] = y;
-            this.data[p] = color[0];
-            this.data[p + 1] = color[1];
-            this.data[p + 2] = color[2];
-            this.data[p + 3] = color[3];
-        });
 
+        if(options.sameLength) {
+            const alpha = this.alpha ? 0 : 255;
+            this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
+                this.data[pixelBuffer[x]] = 0;
+                this.data[pixelBuffer[x] + 1] = 0;
+                this.data[pixelBuffer[x] + 2] = 0;
+                this.data[pixelBuffer[x] + 3] = alpha;
+    
+                pixelBuffer[x] = p;
+                yBuffer[x] = y;
+                this.data[p] = color[0];
+                this.data[p + 1] = color[1];
+                this.data[p + 2] = color[2];
+                this.data[p + 3] = color[3];
+            });
+        }
+        else {
+            this.clearData(this.linesBuffers.length - 1);
+            this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
+                pixelBuffer[x] = p;
+                yBuffer[x] = y;
+                this.data[p] = color[0];
+                this.data[p + 1] = color[1];
+                this.data[p + 2] = color[2];
+                this.data[p + 3] = color[3];
+            });
+        }
         return 0;
     }
 
@@ -165,19 +183,87 @@ export class LineDrawer extends PixelDrawer {
 
         //If line is steep we treat it like from up to down(or down to up)
         if(steep) {
-            for (; x < x1; x++) {
+            for (let i = 0; x < x1; x++, i++) {
                 pixel = x * this.stride + y * 4;
-                pixelReady(x, y, pixel);
+                pixelReady(i, y, pixel);
                 _setError();
             }
         }
         else {//from left to right(or right to left)
-            for (; x < x1; x++) {
+            for (let i = 0; x < x1; x++, i++) {
                 pixel = y * this.stride + x * 4;
-                pixelReady(x, y, pixel);
+                pixelReady(i, y, pixel);
                 _setError();
             }
         }
 
+    }
+
+    /**
+     * Shift line horizontally
+     * @param {Number} index - index of lines buffers
+     * @param {Number} shiftX - horizontally shifted value
+     * @param {Array} color - color array RGBA
+    */
+    shiftX(index = 0, shiftX = 0, color) {
+        if(isNaN(index )) {
+            throw new Error('Index must be a number');
+        }
+        else if(index >= this.linesBuffers.length) {
+            throw new Error(`Index must be less than ${this.linesBuffers.length}`);
+        }
+        const shiftedValue = shiftX * 4;
+        
+        const pixelBuffer = this.linesBuffers[index][0];
+        const alpha = this.alpha ? 0 : 255;
+        let pixel = 0;
+        for (let i = 0; i < pixelBuffer.length; i++) {
+            pixel = pixelBuffer[i];
+            this.data[pixel] = 0;
+            this.data[pixel + 1] = 0;
+            this.data[pixel + 2] = 0;
+            this.data[pixel + 3] = alpha;
+
+            this.data[pixel + shiftedValue] = color[0];
+            this.data[pixel + shiftedValue + 1] = color[1];
+            this.data[pixel + shiftedValue + 2] = color[2];
+            this.data[pixel + shiftedValue + 3] = color[3];
+
+            pixelBuffer[i] = pixel + shiftedValue;
+        }
+    }
+
+    /**
+     * Shift line horizontally
+     * @param {Number} index - index of lines buffers
+     * @param {Number} shiftY - vertically shifted value
+     * @param {Array} color - color array RGBA
+    */
+    shiftY(index = 0, shiftY = 0, color) {
+        if(isNaN(index )) {
+            throw new Error('Index must be a number');
+        }
+        else if(index >= this.linesBuffers.length) {
+            throw new Error(`Index must be less than ${this.linesBuffers.length}`);
+        }
+        const shiftedValue = shiftY * this.stride;
+        
+        const pixelBuffer = this.linesBuffers[index][0];
+        const alpha = this.alpha ? 0 : 255;
+        let pixel = 0;
+        for (let i = 0; i < pixelBuffer.length; i++) {
+            pixel = pixelBuffer[i];
+            this.data[pixel] = 0;
+            this.data[pixel + 1] = 0;
+            this.data[pixel + 2] = 0;
+            this.data[pixel + 3] = alpha;
+
+            this.data[pixel + shiftedValue] = color[0];
+            this.data[pixel + shiftedValue + 1] = color[1];
+            this.data[pixel + shiftedValue + 2] = color[2];
+            this.data[pixel + shiftedValue + 3] = color[3];
+
+            pixelBuffer[i] = pixel + shiftedValue;
+        }
     }
 }
