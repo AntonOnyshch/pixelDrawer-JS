@@ -23,7 +23,7 @@ export class PixelDrawer {
     /** 
     * Clear the all data buffer
     */
-    clearData() {
+    clearAllData() {
         const alpha = this.alpha ? 0 : 255;
         const width = this.width;
         const stride = this.stride;

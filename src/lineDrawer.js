@@ -4,7 +4,6 @@ import {PixelDrawer} from "./pixelDrawer.js";
 * @extends PixelDrawer
 */
 export class LineDrawer extends PixelDrawer {
-    
 
     constructor() {
         super();
@@ -120,21 +119,39 @@ export class LineDrawer extends PixelDrawer {
      * @param {Number} y1 - y coordinate that represents end of the line
      * @param {(Uint8Array | Uint8ClampedArray)} color - Color of the line
     */
-    addLine(x0, y0, x1, y1, color) {
-        this.linesBuffers.push([new Array(this.bufferLength), new Array(this.bufferLength)]);
-        const index = this.linesBuffers.length - 1;
-        const pixelBuffer = this.linesBuffers[index][0];
-        const yBuffer = this.linesBuffers[index][1];
-        this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
-            pixelBuffer[x] = p;
-            yBuffer[x] = y;
-            this.data[p] = color[0];
-            this.data[p + 1] = color[1];
-            this.data[p + 2] = color[2];
-            this.data[p + 3] = color[3];
-        });
+    addLine(x0, y0, x1, y1, color, useCache = true, cacheIndex = -1) {
+        if(useCache) {
+            let index = 0;
+            if(cacheIndex > -1 && cacheIndex < this.linesBuffers.length) {
+                index = cacheIndex;
+            }
+            else {
+                this.linesBuffers.push([new Array(this.bufferLength), new Array(this.bufferLength)]);
+                index = this.linesBuffers.length - 1;
+            }
 
-        return index;
+            const pixelBuffer = this.linesBuffers[index][0];
+            const yBuffer = this.linesBuffers[index][1];
+            this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
+                pixelBuffer[x] = p;
+                yBuffer[x] = y;
+                this.data[p] = color[0];
+                this.data[p + 1] = color[1];
+                this.data[p + 2] = color[2];
+                this.data[p + 3] = color[3];
+            });
+
+            return index;
+        }
+        else {
+            this.internalDraw(x0, y0, x1, y1, (x, y, p) => {
+                this.data[p] = color[0];
+                this.data[p + 1] = color[1];
+                this.data[p + 2] = color[2];
+                this.data[p + 3] = color[3];
+            });
+        return -1;
+        }
     }
 
     /**
