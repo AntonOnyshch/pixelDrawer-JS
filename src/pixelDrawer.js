@@ -56,6 +56,6 @@ export class PixelDrawer {
         this.data[pixel] = color[0];
         this.data[pixel + 1] = color[1];
         this.data[pixel + 2] = color[2];
-        this.data[pixel + 3] =  this.alpha ? color[3] : 255;
+        this.data[pixel + 3] =  color[3];
     }
 }

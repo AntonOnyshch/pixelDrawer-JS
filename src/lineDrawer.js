@@ -188,14 +188,22 @@ export class LineDrawer extends PixelDrawer {
         let y = y0;
         let x = x0;
         let pixel = 0;
-
+        let errortmp = 0;
+        const errorLut = new Array(yadd, dx2, 0, 0);
         //Calculate error
+        // const _setError = () => {
+        //     error += derror;
+        //     if (error > dx) {
+        //         y += yadd;
+        //         error -= dx2;
+        //     }
+        // }
+
         const _setError = () => {
             error += derror;
-            if (error > dx) {
-                y += yadd;
-                error -= dx2;
-            }
+            errortmp = (error - dx) >>> 31;
+            y += errorLut[errortmp + errortmp];
+            error -= errorLut[++errortmp];
         }
 
         //If line is steep we treat it like from up to down(or down to up)
